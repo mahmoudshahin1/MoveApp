@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:moveapp/move/domain/entity/move_entity.dart';
 
 void main() {
+
+
   runApp(const MyApp());
 }
 
