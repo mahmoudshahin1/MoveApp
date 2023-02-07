@@ -9,7 +9,7 @@ final  BaseMoviesRepositiry baseMoviesRepositiry;
 
   GetPopularMoviesUsecase(this.baseMoviesRepositiry);
 
-Future <Either<Failure,List<Movies>>>  execute()async{
+Future <Either<Failure,List<Movies>>> execute()async{
   return await  baseMoviesRepositiry.getPopularMovies(); 
   }
 

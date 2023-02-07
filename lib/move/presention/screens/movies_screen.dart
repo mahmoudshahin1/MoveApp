@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:moveapp/core/service/services_locator.dart';
+import 'package:moveapp/core/utils/app_string.dart';
 import 'package:moveapp/move/presention/componants/get_now_playing_componant.dart';
 import 'package:moveapp/move/presention/componants/popular_componant.dart';
 import 'package:moveapp/move/presention/componants/top_reatid_coponant.dart';
@@ -21,8 +22,8 @@ class MoviesScreen extends StatelessWidget {
       create: (BuildContext context) => sl<MoviesBloc>()
         ..add(GetNowPlayingMoviesEvent())
         ..add(GetPopularMoviesEvent())
-        // ..add(GetTopRatedMoviesEvent()),
-        ,
+        ..add(GetTopRatedMoviesEvent()),
+        
       child: BlocBuilder<MoviesBloc, MoviesState>(
         builder: (context, state) {
           return Scaffold(
@@ -38,12 +39,12 @@ class MoviesScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                         'kfke',
+                         AppString.popular,
                           style: GoogleFonts.poppins(
                             fontSize: 19,
                             fontWeight: FontWeight.w500,
                             letterSpacing: 0.15,
-                            color: Colors.white,
+                            color: Colors.black,
                           ),
                         ),
                         InkWell(
@@ -55,9 +56,9 @@ class MoviesScreen extends StatelessWidget {
                             child: Row(
                               children: const [
                                 Text(
-                                  'kefhon',
+                                 AppString.seeMore,
                                   style: TextStyle(
-                                    color: Colors.white,
+                                    color: Colors.black,
                                   ),
                                 ),
                                 Icon(
@@ -84,10 +85,10 @@ class MoviesScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'ehfio',
+                         AppString.topRated,
                           style: GoogleFonts.poppins(
                             fontSize: 19,
-                            color: Colors.white,
+                            color: Colors.black,
                             fontWeight: FontWeight.w500,
                             letterSpacing: 0.15,
                           ),
@@ -101,9 +102,9 @@ class MoviesScreen extends StatelessWidget {
                             child: Row(
                               children: const [
                                 Text(
-                                  'fioeh',
+                                 AppString.seeMore,
                                   style: TextStyle(
-                                    color: Colors.white,
+                                    color: Colors.black,
                                   ),
                                 ),
                                 Icon(

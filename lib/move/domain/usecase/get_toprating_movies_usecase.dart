@@ -9,7 +9,7 @@ final  BaseMoviesRepositiry baseMoviesRepositiry;
 
   GetTopRatingMoviesUseCase(this.baseMoviesRepositiry);
 
-Future <Either<Failure,List<Movies>>>   execute()async{
+Future <Either<Failure,List<Movies>>> execute()async{
   return await  baseMoviesRepositiry.getTopratingMovies(); 
   }
 

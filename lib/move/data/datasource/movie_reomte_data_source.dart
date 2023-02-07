@@ -8,7 +8,7 @@ abstract class BaseMovieReomteDataSource{
 
   Future<List<MovieModel>> getNowPlayingMovies();
   
-   Future<List<MovieModel>> getPopularMovies();
+  Future<List<MovieModel>> getPopularMovies();
 
   Future<List<MovieModel>> getTopRatedMovies();
 

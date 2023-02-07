@@ -4,6 +4,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:moveapp/core/network/api_constance.dart';
+import 'package:moveapp/core/utils/enums.dart';
 import 'package:moveapp/move/presention/controller/bloc/movies_bloc_bloc.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -16,13 +17,28 @@ class PopularComponant extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<MoviesBloc,MoviesState>(
+            buildWhen: (previous, current) => previous.popularState != current.popularState,
+
       builder: (context, state) {
-        return FadeIn(
+
+      switch(state.popularState){
+        
+        case RequestState.loading:
+        return const SizedBox(
+                height: 400.0,
+                child: Center(
+                  child: CircularProgressIndicator(),
+                ),
+              );
+        case RequestState.loaded:
+          return FadeIn(
         duration: const Duration(milliseconds: 500),
         child: SizedBox(
           height: 170.0,
           child: ListView.builder(
             shrinkWrap: true,
+            physics:const BouncingScrollPhysics(),
+
             scrollDirection: Axis.horizontal,
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             itemCount: state.popularMovies.length,
@@ -63,8 +79,17 @@ class PopularComponant extends StatelessWidget {
           ),
         ),
       );
-      },
-       
+        case RequestState.error:
+          // TODO: Handle this case.
+       return SizedBox(
+                height: 400.0,
+                child: Center(
+                  child: Text(state.nowPlayingMessage),
+                ),
+              );
+
+      }
+      } 
     );
   }
 }

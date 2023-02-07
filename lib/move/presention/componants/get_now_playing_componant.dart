@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:moveapp/core/network/api_constance.dart';
 import 'package:moveapp/core/utils/dummy.dart';
+import 'package:moveapp/core/utils/enums.dart';
 import 'package:moveapp/move/presention/controller/bloc/movies_bloc_bloc.dart';
 
 
@@ -16,9 +17,21 @@ class GetNowPlayingComponant extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<MoviesBloc, MoviesState>(
+      buildWhen: (previous, current) => previous.nowPlayingState != current.nowPlayingState,
       builder: (context, state) {
         
-        return FadeIn(
+        switch (state.nowPlayingState) {
+
+          case RequestState.loading:
+           return const SizedBox(
+                height: 400.0,
+                child: Center(
+                  child: CircularProgressIndicator(),
+                ),
+              );
+
+          case RequestState.loaded:
+            return FadeIn(
         duration: const Duration(milliseconds: 500),
         child: CarouselSlider(
           options: CarouselOptions(
@@ -105,6 +118,21 @@ class GetNowPlayingComponant extends StatelessWidget {
           ).toList(),
         ),
       );
+
+      case RequestState.error:
+
+        return SizedBox(
+                height: 400.0,
+                child: Center(
+                  child: Text(state.nowPlayingMessage),
+                ),
+              );
+
+
+            
+         
+        
+        } 
       },
    
       
