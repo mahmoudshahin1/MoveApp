@@ -22,6 +22,7 @@ class MovieReomteDataSource extends BaseMovieReomteDataSource
 {
   @override
   Future<List<MovieModel>> getNowPlayingMovies()async {
+    
   final response= await Dio().get(ApiConstance.nowPlayingMoviesPath);
 
     if (response.statusCode == 200) {

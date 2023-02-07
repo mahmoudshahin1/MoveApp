@@ -10,7 +10,7 @@ final  BaseMoviesRepositiry baseMoviesRepositiry;
   GetTopRatingMoviesUseCase(this.baseMoviesRepositiry);
 
 Future <Either<Failure,List<Movies>>>   execute()async{
-  return await  baseMoviesRepositiry.getPopularMovies(); 
+  return await  baseMoviesRepositiry.getTopratingMovies(); 
   }
 
 
