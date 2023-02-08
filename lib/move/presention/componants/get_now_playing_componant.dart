@@ -32,17 +32,26 @@ class GetNowPlayingComponant extends StatelessWidget {
 
           case RequestState.loaded:
             return FadeIn(
+               
+              
         duration: const Duration(milliseconds: 500),
+        
         child: CarouselSlider(
+
+          
           options: CarouselOptions(
+            
             height: 400.0,
-            autoPlay: false,
+            autoPlay: true,
             viewportFraction: 1.0,
             onPageChanged: (index, reason) {},
           ),
           items: state.nowPlayingMovies.map(
+            
             (item) {
               return GestureDetector(
+                
+                
                 key: const Key('openMovieMinimalDetail'),
                 onTap: () {
                   /// TODO : NAVIGATE TO MOVIE DETAILS
