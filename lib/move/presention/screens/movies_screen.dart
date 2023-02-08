@@ -28,6 +28,7 @@ class MoviesScreen extends StatelessWidget {
         builder: (context, state) {
           return Scaffold(
             body: SingleChildScrollView(
+              physics: const BouncingScrollPhysics(),
               key: const Key('movieScrollView'),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
